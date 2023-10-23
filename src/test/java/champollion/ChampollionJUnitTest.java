@@ -2,7 +2,7 @@ package champollion;
 
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.Date;
+
 
 public class ChampollionJUnitTest {
 	Enseignant untel;
@@ -25,6 +25,12 @@ public class ChampollionJUnitTest {
             assertEquals(2, untel.heuresPrevues(),"L'enseignant doit réaliser 2h" );
         }
         
+          @Test
+        public void testHeuresPrevuesPourUE(){
+            untel.ajouteEnseignement(uml, 0, 1, 0);
+            untel.ajouteEnseignement(java, 3, 1, 0);
+            assertEquals(4, untel.heuresPrevuesPourUE(java),"L'enseignant doit réaliser 4h de java" );
+        }
        
 
         @Test 
