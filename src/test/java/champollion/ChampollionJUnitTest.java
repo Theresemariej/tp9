@@ -42,5 +42,12 @@ public class ChampollionJUnitTest {
             assertFalse (untel.sousService(), "L'enseignant ne doit pas être en sous service");
 
         }
+	   @Test
+        public void testHeuresPlanifiees(){
+            Salle s = new Salle ("Salle 1", 25);
+            Intervention e = new Intervention (s, uml, untel, new Date(), 2, TypeIntervention.TD);
+            untel.ajouteInterventions(e);
+            assertEquals(2, untel.heuresPlanifiees(), "L'enseignant doit réaliser 2h");
+        }
 
 }
