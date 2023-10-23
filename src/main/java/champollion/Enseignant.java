@@ -84,4 +84,30 @@ return true ;
 else return false ; 
 }
 
+
+      public int heuresPlanifiees(){
+        int heuresPlanifiees =0 ;
+
+        for (int i = 0; i < interventions.size(); i++){
+
+            switch (interventions.get(i).getType()){
+
+                case CM:
+                    heuresPlanifiees += interventions.get(i).getDuree() * 1.5;
+                    break;
+                case TD: 
+                    heuresPlanifiees += interventions.get(i).getDuree();
+                    break;
+                case TP:
+                    heuresPlanifiees += interventions.get(i).getDuree() * 0.75;
+                    break;
+                default:
+                    break;
+            }
+
+        }
+        return Math.round(heuresPlanifiees);
+    }
+
+
 }
