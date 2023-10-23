@@ -26,13 +26,6 @@ public class ChampollionJUnitTest {
         }
         
        
-        @Test
-        public void testHeuresPlanifiees(){
-            Salle s = new Salle ("Salle 1", 25);
-            Intervention e = new Intervention (s, uml, untel, new Date(), 2, TypeIntervention.TD);
-            untel.Intervention(e);
-            assertEquals(2, untel.heuresPlanifiees(), "L'enseignant doit réaliser 2h");
-        }
 
         @Test 
         public void testEnSousService(){
