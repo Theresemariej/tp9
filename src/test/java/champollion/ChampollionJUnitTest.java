@@ -37,10 +37,10 @@ public class ChampollionJUnitTest {
         @Test 
         public void testEnSousService(){
             untel.ajouteEnseignement(uml, 1, 1, 1);
-            assertEquals(true, untel.sousService(), "L'enseignant est en sous service");
+            assertTrue (untel.sousService(), "L'enseignant n'est pas en sous service");
 
             untel.ajouteEnseignement(uml, 100, 50, 50);
-            assertEquals(true, untel.sousService(), "L'enseignant n'est pas en sous service");
+            assertFalse (untel.sousService(), "L'enseignant est en sous service");
 
         }
 
