@@ -1,7 +1,9 @@
 package champollion;
+import java.util.*; 
 
 public class Enseignant extends Personne {
-
+    ArrayList<ServicePrevu> service =  new ArrayList<>() ; 
+    ArrayList<Intervention> inter = new ArrayList<>();
     // TODO : rajouter les autres méthodes présentes dans le diagramme UML
 
     public Enseignant(String nom, String email) {
@@ -17,8 +19,17 @@ public class Enseignant extends Personne {
      *
      */
     public int heuresPrevues() {
+        int TD = 0 ; 
+        for(ServicePrevu s : service ) {
+         TD += s.getCM () *1.5 ;    
+         TD += s.getTP () *0.75 ; 
+         TD += s.getTD () ; 
+
+        }
+        return Math.round(TD) ; 
+
         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+  
     }
 
     /**
@@ -30,9 +41,19 @@ public class Enseignant extends Personne {
      * @return le nombre total d'heures "équivalent TD" prévues pour cet enseignant, arrondi à l'entier le plus proche
      *
      */
-    public int heuresPrevuesPourUE(UE ue) {
         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+         public int heuresPrevuesPourUE(UE ue) {
+        int TD = 0 ; 
+        for(ServicePrevu s : service ) {
+            if (ue.equals(s.getUe())){
+
+         TD += s.getCM () *1.5 ;    
+         TD += s.getTP () *0.75 ; 
+         TD += s.getTD () ; 
+                 }
+        }
+        return TD ; 
+
     }
 
     /**
@@ -43,9 +64,24 @@ public class Enseignant extends Personne {
      * @param volumeTD le volume d'heures de TD
      * @param volumeTP le volume d'heures de TP
      */
-    public void ajouteEnseignement(UE ue, int volumeCM, int volumeTD, int volumeTP) {
-        // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+    public void ajouteEnseignement(UE ue, int CM, int TD, int TP) {
+        // TODO: Implémenter cette méthode (int CM, int TD, int TP,UE ue, Enseignant e){
+        ServicePrevu sp = new ServicePrevu ( CM, TD, TP, ue, this) ; 
+      service.add(sp) ; 
     }
+
+
+public void ajouteIntervention (Salle s, UE ue, Date deb, int d, TypeIntervention type){
+Intervention in = new Intervention (s, ue, this,  deb, d, type) ; 
+  inter.add(in) ; 
+}
+
+public boolean sousService () {
+
+if (this.heuresPrevues () < 192) {
+return true ; 
+}
+else return false ; 
+}
 
 }
