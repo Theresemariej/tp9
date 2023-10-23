@@ -14,7 +14,7 @@ public class ChampollionJUnitTest {
 		untel = new Enseignant("untel", "untel@gmail.com");
 		uml = new UE("UML");
 		java = new UE("Programmation en java");		
-		java = new UE("Programmation en java");	
+		
 
 	}
 
@@ -22,7 +22,7 @@ public class ChampollionJUnitTest {
         public void testHeuresPrevues(){
             untel.ajouteEnseignement(uml, 0, 1, 0);
             untel.ajouteEnseignement(java, 0, 1, 0);
-            assertEquals(2, untel.heuresPrevues(),"L'enseignant doit réaliser 4h" );
+            assertEquals(2, untel.heuresPrevues(),"L'enseignant doit réaliser 2h" );
         }
         
        
